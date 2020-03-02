@@ -10,9 +10,11 @@ int main(int argc, char* argv[])
     unsigned long long* arrCopia;
     unsigned long long* arrInverso;
     int n;
+    long comp = 0;
+    long asig = 0;
     string nombre;
 
-    void (*algoritmo)(int n, unsigned long long arr[]);
+    void (*algoritmo)(int n, unsigned long long arr[], long& comp, long& asig);
 
     n = atoi(argv[1]);
 
@@ -50,25 +52,34 @@ int main(int argc, char* argv[])
         for (int i = 0; i < n; ++i)
             arrCopia[i] = arr[i];
 
+        asig = 0;
+        comp = 0;
+        
         // Aleatorio
         auto start = chrono::high_resolution_clock::now();
         if (j == 4)
-            quick_sort(arrCopia, 0, n - 1);
+            quick_sort(arrCopia, 0, n - 1, comp, asig);
         else
-            algoritmo(n, arrCopia);
+            algoritmo(n, arrCopia, comp, asig);
         auto stop = chrono::high_resolution_clock::now();
         auto miliSeg = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-        llenar_archivo(nombre, n, arrCopia, miliSeg);            
+        llenar_archivo(nombre, n, miliSeg, comp, asig);            
+
+        asig = 0;
+        comp = 0;
 
         // Ordenado
         start = chrono::high_resolution_clock::now();
         if (j == 4)
-            quick_sort(arrCopia, 0, n - 1);
+            quick_sort(arrCopia, 0, n - 1, comp, asig);
         else
-            algoritmo(n, arrCopia);
+            algoritmo(n, arrCopia, comp, asig);
         stop = chrono::high_resolution_clock::now();
         miliSeg = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-        llenar_archivo(nombre, n, arrCopia, miliSeg);  
+        llenar_archivo(nombre, n, miliSeg, comp, asig);  
+
+        asig = 0;
+        comp = 0;
 
         // Inversamente ordenado
         for (int i = 0; i < n; ++i)
@@ -79,12 +90,12 @@ int main(int argc, char* argv[])
         
         start = chrono::high_resolution_clock::now();
         if (j == 4)
-            quick_sort(arrInverso, 0, n - 1);
+            quick_sort(arrInverso, 0, n - 1, comp, asig);
         else
-            algoritmo(n, arrInverso);
+            algoritmo(n, arrInverso, comp, asig);
         stop = chrono::high_resolution_clock::now();
         miliSeg = chrono::duration_cast<chrono::nanoseconds>(stop - start);
-        llenar_archivo(nombre, n, arrInverso, miliSeg);
+        llenar_archivo(nombre, n, miliSeg, comp, asig);
 
         delete[] arrInverso;
         arrInverso = nullptr;

@@ -1,24 +1,15 @@
-321387857
-395635168
-483098328
-715225543
-1464254669
-Segundos: 9.241e-06
-Nanosegundos: 9241
+Comparaciones: 4
+Asignaciones: 8
+Segundos: 1.0941e-05
+Nanosegundos: 10941
 ---------------------------------------------
-321387857
-395635168
-483098328
-715225543
-1464254669
-Segundos: 8.992e-06
-Nanosegundos: 8992
+Comparaciones: 4
+Asignaciones: 0
+Segundos: 9.515e-06
+Nanosegundos: 9515
 ---------------------------------------------
-321387857
-395635168
-483098328
-715225543
-1464254669
-Segundos: 8.236e-06
-Nanosegundos: 8236
+Comparaciones: 4
+Asignaciones: 10
+Segundos: 8.068e-06
+Nanosegundos: 8068
 ---------------------------------------------
